@@ -1,0 +1,142 @@
+2026-04-09 19:53:52,842 [trainer.py] => config: .\exps\tagfex_adsb_image.json
+2026-04-09 19:53:52,842 [trainer.py] => prefix: adsb_image_tagfex
+2026-04-09 19:53:52,843 [trainer.py] => dataset: adsb_image
+2026-04-09 19:53:52,843 [trainer.py] => data_root: ./data/adsb_image
+2026-04-09 19:53:52,843 [trainer.py] => train_data_file: train_data.npy
+2026-04-09 19:53:52,843 [trainer.py] => train_label_file: train_label.npy
+2026-04-09 19:53:52,844 [trainer.py] => test_data_file: test_data.npy
+2026-04-09 19:53:52,844 [trainer.py] => test_label_file: test_label.npy
+2026-04-09 19:53:52,844 [trainer.py] => image_size: 32
+2026-04-09 19:53:52,844 [trainer.py] => num_channels: 3
+2026-04-09 19:53:52,845 [trainer.py] => memory_size: 2000
+2026-04-09 19:53:52,845 [trainer.py] => memory_per_class: 20
+2026-04-09 19:53:52,845 [trainer.py] => fixed_memory: False
+2026-04-09 19:53:52,845 [trainer.py] => shuffle: True
+2026-04-09 19:53:52,846 [trainer.py] => init_cls: 50
+2026-04-09 19:53:52,846 [trainer.py] => increment: 10
+2026-04-09 19:53:52,846 [trainer.py] => model_name: tagfex
+2026-04-09 19:53:52,846 [trainer.py] => convnet_type: resnet18
+2026-04-09 19:53:52,847 [trainer.py] => device: [device(type='cuda', index=0)]
+2026-04-09 19:53:52,847 [trainer.py] => seed: 1993
+2026-04-09 19:53:52,847 [trainer.py] => init_interpolation_factor: 0.95
+2026-04-09 19:53:52,847 [trainer.py] => infonce_temp: 0.2
+2026-04-09 19:53:52,847 [trainer.py] => kd_temp: 2
+2026-04-09 19:53:52,848 [trainer.py] => infonce_kd_temp: 0.2
+2026-04-09 19:53:52,848 [trainer.py] => proj_hidden_dim: 2048
+2026-04-09 19:53:52,848 [trainer.py] => proj_output_dim: 1024
+2026-04-09 19:53:52,848 [trainer.py] => attn_num_heads: 8
+2026-04-09 19:53:52,849 [trainer.py] => contrast_factor: 1
+2026-04-09 19:53:52,849 [trainer.py] => trans_cls_factor: 1
+2026-04-09 19:53:52,849 [trainer.py] => transfer_factor: 1
+2026-04-09 19:53:52,850 [trainer.py] => aux_factor: 2
+2026-04-09 19:53:52,850 [trainer.py] => contrast_kd_factor: 2
+2026-04-09 19:53:52,850 [trainer.py] => aug: 2
+2026-04-09 19:53:53,382 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2026-04-09 19:53:55,465 [trainer.py] => All params: 14317632
+2026-04-09 19:53:55,466 [trainer.py] => Trainable params: 14317632
+2026-04-09 19:53:55,617 [tagfex.py] => Learning on 0-50
+2026-04-09 19:53:55,618 [tagfex.py] => All params: 27139351
+2026-04-09 19:53:55,618 [tagfex.py] => Trainable params: 27139351
+2026-04-09 21:43:49,509 [tagfex.py] => Task 0, Epoch 200/200 => Loss 1.049, Train_accy 100.00
+2026-04-09 21:43:49,510 [base.py] => Reducing exemplars...(40 per classes)
+2026-04-09 21:43:49,510 [base.py] => Constructing exemplars...(40 per classes)
+2026-04-09 22:04:03,000 [tagfex.py] => Exemplar size: 2000
+2026-04-09 22:04:03,000 [trainer.py] => CNN: {'total': np.float64(90.38), '00-09': np.float64(93.55), '10-19': np.float64(91.79), '20-29': np.float64(89.32), '30-39': np.float64(88.51), '40-49': np.float64(88.75), 'old': 0, 'new': np.float64(90.38)}
+2026-04-09 22:04:03,001 [trainer.py] => NME: {'total': np.float64(90.49), '00-09': np.float64(93.55), '10-19': np.float64(91.61), '20-29': np.float64(90.04), '30-39': np.float64(89.14), '40-49': np.float64(88.13), 'old': 0, 'new': np.float64(90.49)}
+2026-04-09 22:04:03,001 [trainer.py] => CNN top1 curve: [np.float64(90.38)]
+2026-04-09 22:04:03,001 [trainer.py] => CNN top5 curve: [np.float64(97.5)]
+2026-04-09 22:04:03,002 [trainer.py] => NME top1 curve: [np.float64(90.49)]
+2026-04-09 22:04:03,002 [trainer.py] => NME top5 curve: [np.float64(97.34)]
+
+2026-04-09 22:04:03,002 [trainer.py] => Average Accuracy (CNN): 90.38
+2026-04-09 22:04:03,003 [trainer.py] => Average Accuracy (NME): 90.49
+2026-04-09 22:04:03,003 [trainer.py] => All params: 27139351
+2026-04-09 22:04:03,004 [trainer.py] => Trainable params: 27139351
+2026-04-09 22:04:03,157 [tagfex.py] => Learning on 50-60
+2026-04-09 22:04:03,158 [tagfex.py] => All params: 38302993
+2026-04-09 22:04:03,159 [tagfex.py] => Trainable params: 27134161
+2026-04-09 23:31:45,873 [tagfex.py] => Task 1, Epoch 170/170 => Loss 2.330, Loss_clf 0.006, Loss_aux 0.025, Train_accy 99.92
+2026-04-09 23:31:45,903 [base.py] => Reducing exemplars...(33 per classes)
+2026-04-09 23:41:22,065 [base.py] => Constructing exemplars...(33 per classes)
+2026-04-09 23:46:01,931 [tagfex.py] => Exemplar size: 1980
+2026-04-09 23:46:01,931 [trainer.py] => CNN: {'total': np.float64(87.37), '00-09': np.float64(93.82), '10-19': np.float64(91.35), '20-29': np.float64(87.9), '30-39': np.float64(88.06), '40-49': np.float64(87.6), '50-59': np.float64(75.53), 'old': np.float64(89.74), 'new': np.float64(75.53)}
+2026-04-09 23:46:01,931 [trainer.py] => NME: {'total': np.float64(88.68), '00-09': np.float64(92.84), '10-19': np.float64(90.72), '20-29': np.float64(89.59), '30-39': np.float64(88.78), '40-49': np.float64(87.51), '50-59': np.float64(82.65), 'old': np.float64(89.88), 'new': np.float64(82.65)}
+2026-04-09 23:46:01,932 [trainer.py] => CNN top1 curve: [np.float64(90.38), np.float64(87.37)]
+2026-04-09 23:46:01,932 [trainer.py] => CNN top5 curve: [np.float64(97.5), np.float64(96.76)]
+2026-04-09 23:46:01,932 [trainer.py] => NME top1 curve: [np.float64(90.49), np.float64(88.68)]
+2026-04-09 23:46:01,933 [trainer.py] => NME top5 curve: [np.float64(97.34), np.float64(97.13)]
+
+2026-04-09 23:46:01,933 [trainer.py] => Average Accuracy (CNN): 88.875
+2026-04-09 23:46:01,934 [trainer.py] => Average Accuracy (NME): 89.58500000000001
+2026-04-09 23:46:01,934 [trainer.py] => All params: 38302993
+2026-04-09 23:46:01,935 [trainer.py] => Trainable params: 27134161
+2026-04-09 23:46:02,080 [tagfex.py] => Learning on 60-70
+2026-04-09 23:46:02,082 [tagfex.py] => All params: 49517915
+2026-04-09 23:46:02,082 [tagfex.py] => Trainable params: 27180251
+2026-04-10 01:14:23,978 [tagfex.py] => Task 2, Epoch 170/170 => Loss 2.174, Loss_clf 0.004, Loss_aux 0.002, Train_accy 100.00
+2026-04-10 01:14:23,984 [base.py] => Reducing exemplars...(28 per classes)
+2026-04-10 01:25:58,265 [base.py] => Constructing exemplars...(28 per classes)
+2026-04-10 01:30:40,496 [tagfex.py] => Exemplar size: 1960
+2026-04-10 01:30:40,496 [trainer.py] => CNN: {'total': np.float64(88.0), '00-09': np.float64(91.67), '10-19': np.float64(88.76), '20-29': np.float64(87.99), '30-39': np.float64(86.98), '40-49': np.float64(85.92), '50-59': np.float64(87.9), '60-69': np.float64(86.82), 'old': np.float64(88.2), 'new': np.float64(86.82)}
+2026-04-10 01:30:40,497 [trainer.py] => NME: {'total': np.float64(88.13), '00-09': np.float64(92.48), '10-19': np.float64(90.19), '20-29': np.float64(89.41), '30-39': np.float64(88.6), '40-49': np.float64(86.71), '50-59': np.float64(83.19), '60-69': np.float64(86.37), 'old': np.float64(88.42), 'new': np.float64(86.37)}
+2026-04-10 01:30:40,497 [trainer.py] => CNN top1 curve: [np.float64(90.38), np.float64(87.37), np.float64(88.0)]
+2026-04-10 01:30:40,497 [trainer.py] => CNN top5 curve: [np.float64(97.5), np.float64(96.76), np.float64(96.12)]
+2026-04-10 01:30:40,497 [trainer.py] => NME top1 curve: [np.float64(90.49), np.float64(88.68), np.float64(88.13)]
+2026-04-10 01:30:40,497 [trainer.py] => NME top5 curve: [np.float64(97.34), np.float64(97.13), np.float64(96.79)]
+
+2026-04-10 01:30:40,498 [trainer.py] => Average Accuracy (CNN): 88.58333333333333
+2026-04-10 01:30:40,498 [trainer.py] => Average Accuracy (NME): 89.10000000000001
+2026-04-10 01:30:40,499 [trainer.py] => All params: 49517915
+2026-04-10 01:30:40,500 [trainer.py] => Trainable params: 27180251
+2026-04-10 01:30:40,695 [tagfex.py] => Learning on 70-80
+2026-04-10 01:30:40,697 [tagfex.py] => All params: 60743077
+2026-04-10 01:30:40,698 [tagfex.py] => Trainable params: 27236581
+2026-04-10 02:59:47,852 [tagfex.py] => Task 3, Epoch 170/170 => Loss 2.174, Loss_clf 0.005, Loss_aux 0.001, Train_accy 100.00
+2026-04-10 02:59:47,855 [base.py] => Reducing exemplars...(25 per classes)
+2026-04-10 03:13:18,497 [base.py] => Constructing exemplars...(25 per classes)
+2026-04-10 03:18:02,727 [tagfex.py] => Exemplar size: 2000
+2026-04-10 03:18:02,727 [trainer.py] => CNN: {'total': np.float64(87.58), '00-09': np.float64(91.05), '10-19': np.float64(88.05), '20-29': np.float64(87.19), '30-39': np.float64(85.46), '40-49': np.float64(84.94), '50-59': np.float64(85.77), '60-69': np.float64(87.98), '70-79': np.float64(90.22), 'old': np.float64(87.2), 'new': np.float64(90.22)}
+2026-04-10 03:18:02,728 [trainer.py] => NME: {'total': np.float64(87.68), '00-09': np.float64(91.67), '10-19': np.float64(89.47), '20-29': np.float64(88.7), '30-39': np.float64(87.07), '40-49': np.float64(86.01), '50-59': np.float64(83.1), '60-69': np.float64(86.1), '70-79': np.float64(89.32), 'old': np.float64(87.44), 'new': np.float64(89.32)}
+2026-04-10 03:18:02,728 [trainer.py] => CNN top1 curve: [np.float64(90.38), np.float64(87.37), np.float64(88.0), np.float64(87.58)]
+2026-04-10 03:18:02,728 [trainer.py] => CNN top5 curve: [np.float64(97.5), np.float64(96.76), np.float64(96.12), np.float64(96.23)]
+2026-04-10 03:18:02,729 [trainer.py] => NME top1 curve: [np.float64(90.49), np.float64(88.68), np.float64(88.13), np.float64(87.68)]
+2026-04-10 03:18:02,729 [trainer.py] => NME top5 curve: [np.float64(97.34), np.float64(97.13), np.float64(96.79), np.float64(96.72)]
+
+2026-04-10 03:18:02,729 [trainer.py] => Average Accuracy (CNN): 88.3325
+2026-04-10 03:18:02,730 [trainer.py] => Average Accuracy (NME): 88.745
+2026-04-10 03:18:02,731 [trainer.py] => All params: 60743077
+2026-04-10 03:18:02,732 [trainer.py] => Trainable params: 27236581
+2026-04-10 03:18:02,933 [tagfex.py] => Learning on 80-90
+2026-04-10 03:18:02,935 [tagfex.py] => All params: 71978479
+2026-04-10 03:18:02,936 [tagfex.py] => Trainable params: 27303151
+2026-04-10 04:48:12,295 [tagfex.py] => Task 4, Epoch 170/170 => Loss 2.190, Loss_clf 0.006, Loss_aux 0.001, Train_accy 100.00
+2026-04-10 04:48:12,299 [base.py] => Reducing exemplars...(22 per classes)
+2026-04-10 05:03:38,740 [base.py] => Constructing exemplars...(22 per classes)
+2026-04-10 05:08:24,255 [tagfex.py] => Exemplar size: 1980
+2026-04-10 05:08:24,255 [trainer.py] => CNN: {'total': np.float64(87.01), '00-09': np.float64(90.33), '10-19': np.float64(87.78), '20-29': np.float64(86.65), '30-39': np.float64(84.11), '40-49': np.float64(84.32), '50-59': np.float64(84.79), '60-69': np.float64(86.73), '70-79': np.float64(92.73), '80-89': np.float64(85.69), 'old': np.float64(87.17), 'new': np.float64(85.69)}
+2026-04-10 05:08:24,256 [trainer.py] => NME: {'total': np.float64(87.21), '00-09': np.float64(91.58), '10-19': np.float64(89.21), '20-29': np.float64(87.72), '30-39': np.float64(86.54), '40-49': np.float64(85.12), '50-59': np.float64(83.1), '60-69': np.float64(85.47), '70-79': np.float64(88.78), '80-89': np.float64(87.39), 'old': np.float64(87.18), 'new': np.float64(87.39)}
+2026-04-10 05:08:24,257 [trainer.py] => CNN top1 curve: [np.float64(90.38), np.float64(87.37), np.float64(88.0), np.float64(87.58), np.float64(87.01)]
+2026-04-10 05:08:24,257 [trainer.py] => CNN top5 curve: [np.float64(97.5), np.float64(96.76), np.float64(96.12), np.float64(96.23), np.float64(95.92)]
+2026-04-10 05:08:24,257 [trainer.py] => NME top1 curve: [np.float64(90.49), np.float64(88.68), np.float64(88.13), np.float64(87.68), np.float64(87.21)]
+2026-04-10 05:08:24,258 [trainer.py] => NME top5 curve: [np.float64(97.34), np.float64(97.13), np.float64(96.79), np.float64(96.72), np.float64(96.38)]
+
+2026-04-10 05:08:24,258 [trainer.py] => Average Accuracy (CNN): 88.068
+2026-04-10 05:08:24,259 [trainer.py] => Average Accuracy (NME): 88.438
+2026-04-10 05:08:24,260 [trainer.py] => All params: 71978479
+2026-04-10 05:08:24,261 [trainer.py] => Trainable params: 27303151
+2026-04-10 05:08:24,420 [tagfex.py] => Learning on 90-100
+2026-04-10 05:08:24,422 [tagfex.py] => All params: 83224121
+2026-04-10 05:08:24,424 [tagfex.py] => Trainable params: 27379961
+2026-04-10 06:39:09,197 [tagfex.py] => Task 5, Epoch 170/170 => Loss 2.154, Loss_clf 0.006, Loss_aux 0.001, Train_accy 100.00
+2026-04-10 06:39:09,203 [base.py] => Reducing exemplars...(20 per classes)
+2026-04-10 06:56:31,623 [base.py] => Constructing exemplars...(20 per classes)
+2026-04-10 07:01:19,287 [tagfex.py] => Exemplar size: 2000
+2026-04-10 07:01:19,288 [trainer.py] => CNN: {'total': np.float64(86.02), '00-09': np.float64(90.6), '10-19': np.float64(87.33), '20-29': np.float64(85.94), '30-39': np.float64(83.66), '40-49': np.float64(83.7), '50-59': np.float64(83.9), '60-69': np.float64(85.74), '70-79': np.float64(91.47), '80-89': np.float64(89.53), '90-99': np.float64(78.32), 'old': np.float64(86.87), 'new': np.float64(78.32)}
+2026-04-10 07:01:19,289 [trainer.py] => NME: {'total': np.float64(86.31), '00-09': np.float64(91.41), '10-19': np.float64(88.4), '20-29': np.float64(86.21), '30-39': np.float64(86.0), '40-49': np.float64(84.41), '50-59': np.float64(82.74), '60-69': np.float64(84.75), '70-79': np.float64(87.79), '80-89': np.float64(87.3), '90-99': np.float64(84.1), 'old': np.float64(86.55), 'new': np.float64(84.1)}
+2026-04-10 07:01:19,289 [trainer.py] => CNN top1 curve: [np.float64(90.38), np.float64(87.37), np.float64(88.0), np.float64(87.58), np.float64(87.01), np.float64(86.02)]
+2026-04-10 07:01:19,290 [trainer.py] => CNN top5 curve: [np.float64(97.5), np.float64(96.76), np.float64(96.12), np.float64(96.23), np.float64(95.92), np.float64(95.72)]
+2026-04-10 07:01:19,290 [trainer.py] => NME top1 curve: [np.float64(90.49), np.float64(88.68), np.float64(88.13), np.float64(87.68), np.float64(87.21), np.float64(86.31)]
+2026-04-10 07:01:19,290 [trainer.py] => NME top5 curve: [np.float64(97.34), np.float64(97.13), np.float64(96.79), np.float64(96.72), np.float64(96.38), np.float64(96.09)]
+
+2026-04-10 07:01:19,291 [trainer.py] => Average Accuracy (CNN): 87.72666666666667
+2026-04-10 07:01:19,291 [trainer.py] => Average Accuracy (NME): 88.08333333333333
