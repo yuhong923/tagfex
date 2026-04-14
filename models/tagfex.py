@@ -229,13 +229,26 @@ class TagFex(BaseLearner):
                 kd_loss = infoNCE_distill_loss(self.last_projector(predicted_feature), self.last_projector(old_ta_feature), self.args['infonce_kd_temp'])
                 trans_logits = outputs["trans_logits"]
                 cur_task_mask = (targets >= self._known_classes)
-                trans_cls_loss = F.cross_entropy(trans_logits[cur_task_mask], targets[cur_task_mask] - self._known_classes)
+                if cur_task_mask.any():
+                    trans_cls_loss = F.cross_entropy(
+                        trans_logits[cur_task_mask],
+                        targets[cur_task_mask] - self._known_classes,
+                    )
 
-                if trans_cls_loss < loss_clf:
-                    T = self.args['kd_temp']
-                    transfer_loss = F.kl_div((logits[cur_task_mask][:, self._known_classes:] / T).log_softmax(dim=1), (trans_logits.detach()[cur_task_mask] / T).softmax(dim=1), reduction='batchmean')
+                    if trans_cls_loss.detach() < loss_clf.detach():
+                        T = self.args['kd_temp']
+                        transfer_loss = F.kl_div(
+                            (logits[cur_task_mask][:, self._known_classes:] / T).log_softmax(dim=1),
+                            (trans_logits.detach()[cur_task_mask] / T).softmax(dim=1),
+                            reduction='batchmean',
+                        )
+                    else:
+                        transfer_loss = torch.zeros((), device=self._device)
                 else:
-                    transfer_loss = torch.tensor(0., device=self._device)
+                    # Replay batches may contain only old-class exemplars. The transfer heads
+                    # are undefined for an empty new-class slice, and PyTorch returns NaN here.
+                    trans_cls_loss = torch.zeros((), device=self._device)
+                    transfer_loss = torch.zeros((), device=self._device)
 
                 auto_kd_factor = self._known_classes / self._total_classes
                 loss = loss_clf + \
@@ -244,8 +257,29 @@ class TagFex(BaseLearner):
                 self.args['trans_cls_factor'] * trans_cls_loss + \
                 self.args['transfer_factor'] * transfer_loss         
 
+                if not torch.isfinite(loss):
+                    raise RuntimeError(
+                        "Non-finite loss in Task {} Epoch {} Batch {}: "
+                        "loss_clf={}, loss_aux={}, infonce={}, kd_loss={}, trans_cls_loss={}, transfer_loss={}, new_samples={}".format(
+                            self._cur_task,
+                            epoch + 1,
+                            i + 1,
+                            float(loss_clf.detach().cpu()),
+                            float(loss_aux.detach().cpu()),
+                            float(infonce_loss.detach().cpu()),
+                            float(kd_loss.detach().cpu()),
+                            float(trans_cls_loss.detach().cpu()),
+                            float(transfer_loss.detach().cpu()),
+                            int(cur_task_mask.sum().item()),
+                        )
+                    )
+
                 optimizer.zero_grad()
                 loss.backward()
+                torch.nn.utils.clip_grad_norm_(
+                    filter(lambda p: p.requires_grad, self._network.parameters()),
+                    max_norm=5.0,
+                )
                 optimizer.step()
                 losses += loss.item()
                 losses_aux += loss_aux.item()

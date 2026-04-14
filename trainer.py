@@ -45,7 +45,7 @@ def _train(args):
         force=True,
     )
 
-    _set_random()
+    _set_random(args["seed"])
     _set_device(args)
     print_args(args)
     data_manager = DataManager(
@@ -127,7 +127,8 @@ def _train(args):
             logging.info("Average Accuracy (CNN): {}".format(sum(cnn_curve["top1"]) / len(cnn_curve["top1"])))
 
     if len(cnn_matrix) > 0:
-        np_acctable = np.zeros([task + 1, task + 1])
+        max_groups = max(len(line) for line in cnn_matrix)
+        np_acctable = np.zeros([len(cnn_matrix), max_groups])
         for idxx, line in enumerate(cnn_matrix):
             idxy = len(line)
             np_acctable[idxx, :idxy] = np.array(line)
@@ -138,7 +139,8 @@ def _train(args):
         print('Forgetting (CNN):', forgetting)
         logging.info('Forgetting (CNN): {}'.format(forgetting))
     if len(nme_matrix) > 0:
-        np_acctable = np.zeros([task + 1, task + 1])
+        max_groups = max(len(line) for line in nme_matrix)
+        np_acctable = np.zeros([len(nme_matrix), max_groups])
         for idxx, line in enumerate(nme_matrix):
             idxy = len(line)
             np_acctable[idxx, :idxy] = np.array(line)
@@ -165,11 +167,12 @@ def _set_device(args):
     args["device"] = gpus
 
 
-def _set_random():
-    torch.manual_seed(1)
+def _set_random(seed=1):
+    torch.manual_seed(seed)
+    np.random.seed(seed)
     if torch.cuda.is_available():
-        torch.cuda.manual_seed(1)
-        torch.cuda.manual_seed_all(1)
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
